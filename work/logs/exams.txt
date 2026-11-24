@@ -1,0 +1,65 @@
+# 2026-11-18 23:10:53 baselines
+ft_a_320x576.onnx          EXAM 0.6000 (titan 0.565 human 0.636) | horse painted as figure  79.4% | VAL 0.8618 (frame5 0.53)
+ft_b_320x576.onnx          EXAM 0.6114 (titan 0.579 human 0.644) | horse painted as figure  78.6% | VAL 0.8627 (frame5 0.54)
+# 2026-11-18 23:29:23 e2_zoom: --encoder mit_b1 --resume work/ckpt/segb1.pt --h 320 --w 576 --crop-h 320 --crop-w 448 --iters 1500 --lr 1e-4 --zoom 0.8,3.4
+e2_zoom.onnx               EXAM 0.5819 (titan 0.539 human 0.624) | horse painted as figure  82.6% | VAL 0.8421 (frame5 0.48)
+# 2026-11-18 23:48:20 e3_zoom_haze: --encoder mit_b1 --resume work/ckpt/segb1.pt --h 320 --w 576 --crop-h 320 --crop-w 448 --iters 1500 --lr 1e-4 --zoom 0.8,3.4 --haze 0.3
+e3_zoom_haze.onnx          EXAM 0.6008 (titan 0.561 human 0.641) | horse painted as figure  81.5% | VAL 0.8507 (frame5 0.47)
+# 2026-11-19 00:27:33 f1_b0_448: --encoder mit_b0 --h 448 --w 800 --iters 5000
+f1_b0_448.onnx             EXAM 0.5833 (titan 0.551 human 0.616) | horse painted as figure  80.2% | VAL 0.8516 (frame5 0.56)
+# 2026-11-19 01:27:11 f2_b0_448_zoom: --encoder mit_b0 --h 448 --w 800 --iters 5000 --crop-h 448 --crop-w 448 --zoom 0.8,2.4
+f2_b0_448_zoom.onnx        EXAM 0.5793 (titan 0.524 human 0.634) | horse painted as figure  86.4% | VAL 0.8342 (frame5 0.50)
+# 2026-11-19 02:12:27 ab_old_s0: labels=work/labels_train --encoder mit_b1 --h 320 --w 576 --crop-h 320 --crop-w 448 --zoom 0.8,1.5 --iters 4000 --seed 0
+ab_old_s0.onnx             EXAM 0.5112 (titan 0.494 human 0.529) | horse painted as figure  82.6% | VAL 0.8532 (frame5 0.51)
+# 2026-11-19 02:57:34 ab_new_s0: labels=work/labels_train_v3 --encoder mit_b1 --h 320 --w 576 --crop-h 320 --crop-w 448 --zoom 0.8,1.5 --iters 4000 --seed 0
+ab_new_s0.onnx             EXAM 0.5723 (titan 0.535 human 0.610) | horse painted as figure  83.1% | VAL 0.8597 (frame5 0.50)
+# 2026-11-19 03:42:56 ab_new_s1: labels=work/labels_train_v3 --encoder mit_b1 --h 320 --w 576 --crop-h 320 --crop-w 448 --zoom 0.8,1.5 --iters 4000 --seed 1
+ab_new_s1.onnx             EXAM 0.5787 (titan 0.543 human 0.614) | horse painted as figure  91.0% | VAL 0.8731 (frame5 0.53)
+# 2026-11-19 04:28:11 ab_old_s1: labels=work/labels_train --encoder mit_b1 --h 320 --w 576 --crop-h 320 --crop-w 448 --zoom 0.8,1.5 --iters 4000 --seed 1
+ab_old_s1.onnx             EXAM 0.5576 (titan 0.530 human 0.585) | horse painted as figure  84.2% | VAL 0.8634 (frame5 0.56)
+# 2026-11-19 04:29:15 segb1_320: old labels, stage 1 only (448x800), exported at 320x576
+segb1_320.onnx             EXAM 0.5818 (titan 0.543 human 0.620) | horse painted as figure  79.7% | VAL 0.8556 (frame5 0.48)
+# 2026-11-19 05:27:39 hon3: v3 labels, stage 1 (honest)
+hon3.onnx                  EXAM 0.6275 (titan 0.585 human 0.670) | horse painted as figure  88.9% | VAL 0.8574 (frame5 0.47)
+# 2026-11-19 05:46:48 ft3: v3 labels, stage 2 from hon3 (honest)
+ft3.onnx                   EXAM 0.5824 (titan 0.542 human 0.623) | horse painted as figure  90.2% | VAL 0.8621 (frame5 0.50)
+# 2026-11-19 06:44:37 final3: v3 labels + val x4, stage 1 (VAL not honest)
+final3.onnx                EXAM 0.6328 (titan 0.566 human 0.699) | horse painted as figure  87.4% | VAL 0.9438 (frame5 0.80)
+# 2026-11-19 07:02:13 final3_ft: v3 labels + val x4, stage 2 from final3 (VAL not honest)
+final3_ft.onnx             EXAM 0.6132 (titan 0.566 human 0.661) | horse painted as figure  87.9% | VAL 0.9548 (frame5 0.84)
+# 2026-11-19 08:03:14 hon_old_s1: old labels, stage 1, seed 1 (honest)
+hon_old_s1.onnx            EXAM 0.6112 (titan 0.578 human 0.644) | horse painted as figure  84.5% | VAL 0.8407 (frame5 0.52)
+# 2026-11-19 09:01:01 hon3_s1: v3 labels, stage 1, seed 1 (honest)
+hon3_s1.onnx               EXAM 0.6084 (titan 0.559 human 0.658) | horse painted as figure  86.1% | VAL 0.8514 (frame5 0.42)
+# 2026-11-19 09:58:41 final3_s1: v3 labels + val x4, stage 1, seed 1 (VAL not honest)
+final3_s1.onnx             EXAM 0.6234 (titan 0.575 human 0.672) | horse painted as figure  88.9% | VAL 0.9440 (frame5 0.81)
+# 2026-11-19 11:05:30 hon_old_s0: old labels, stage 1, seed 0, current train.py (honest)
+hon_old_s0.onnx            EXAM 0.6340 (titan 0.598 human 0.670) | horse painted as figure  86.5% | VAL 0.8421 (frame5 0.53)
+# 2026-11-19 11:25:08 ds_frozen_s0: DinoSeg ViT-S/16 DINOv3 frozen, v3 labels, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --encoder vit_small_patch16_dinov3.lvd1689m --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --enc-mult 0 --lr 1e-3 --iters 3000 --bs 8 --seed 0
+ds_frozen_s0.onnx          EXAM 0.6741 (titan 0.631 human 0.718) | horse painted as figure  45.2% | VAL 0.8436 (frame5 0.59)
+# 2026-11-19 11:57:26 ds_ft_s0: DinoSeg ViT-S/16 DINOv3 fine-tuned (backbone lr x0.02), v3 labels, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --encoder vit_small_patch16_dinov3.lvd1689m --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --enc-mult 0.02 --lr 1e-3 --iters 3000 --bs 8 --seed 0
+ds_ft_s0.onnx              EXAM 0.7200 (titan 0.683 human 0.757) | horse painted as figure  35.5% | VAL 0.8663 (frame5 0.71)
+# 2026-11-19 13:09:11 ds_slim_ft02: DinoSeg slim decoder (c24,32,48,32), backbone lr x0.02, v3, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --iters 3000 --bs 8 --seed 0 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.02
+ds_slim_ft02.onnx          EXAM 0.7671 (titan 0.736 human 0.799) | horse painted as figure  35.7% | VAL 0.8565 (frame5 0.66)
+# 2026-11-19 13:40:57 ds_ft05: DinoSeg, backbone lr x0.05, v3, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --iters 3000 --bs 8 --seed 0 --encoder vit_small_patch16_dinov3.lvd1689m --enc-mult 0.05
+ds_ft05.onnx               EXAM 0.6798 (titan 0.652 human 0.707) | horse painted as figure  58.5% | VAL 0.8438 (frame5 0.64)
+# 2026-11-19 14:12:36 ds_ft10: DinoSeg, backbone lr x0.1, v3, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --iters 3000 --bs 8 --seed 0 --encoder vit_small_patch16_dinov3.lvd1689m --enc-mult 0.1
+ds_ft10.onnx               EXAM 0.6604 (titan 0.633 human 0.687) | horse painted as figure  69.4% | VAL 0.8600 (frame5 0.68)
+# 2026-11-19 15:36:44 ds_final_a: FINAL candidate: DinoSeg slim, v3 + val x4 (VAL not honest) | --train data/train/images:work/labels_train_v3 data/val_in_domain/images:data/val_in_domain/masks:4 --val none --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --iters 3000 --bs 8 --enc-mult 0.02 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --seed 0
+ds_final_a.onnx            EXAM 0.7390 (titan 0.707 human 0.771) | horse painted as figure  34.0% | VAL 0.9309 (frame5 0.82)
+# 2026-11-19 16:14:25 ds_slim_ft02_s1: DinoSeg slim, backbone lr x0.02, seed 1, v3, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --iters 3000 --bs 8 --enc-mult 0.02 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --seed 1
+ds_slim_ft02_s1.onnx       EXAM 0.7739 (titan 0.753 human 0.794) | horse painted as figure  37.2% | VAL 0.8613 (frame5 0.70)
+# 2026-11-19 16:47:49 ds_slim_416: DinoSeg slim at 416x736 (ViT 13x23 tokens), v3, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 416 --w 736 --crop-h 416 --crop-w 736 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --iters 3000 --bs 8 --enc-mult 0.02 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --seed 0
+ds_slim_416.onnx           EXAM 0.7575 (titan 0.729 human 0.786) | horse painted as figure  30.6% | VAL 0.8445 (frame5 0.66)
+# 2026-11-19 17:31:28 ds_horses: DinoSeg slim + horse copy-paste (kit cut-outs), honest | --train data/train/images:work/labels_train_v3 --horses data/train/images:work/labels_train_v3:work/horses_ok_train --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --bs 8 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.02 --iters 3000 --seed 0
+ds_horses.onnx             EXAM 0.7422 (titan 0.704 human 0.781) | horse painted as figure  28.1% | VAL 0.8768 (frame5 0.74)
+# 2026-11-19 18:10:34 ds_ft01: DinoSeg slim, backbone lr x0.01, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --bs 8 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.01 --iters 3000 --seed 0
+ds_ft01.onnx               EXAM 0.7698 (titan 0.742 human 0.798) | horse painted as figure  34.0% | VAL 0.8668 (frame5 0.69)
+# 2026-11-19 19:11:12 ds_long: DinoSeg slim, 5000 its, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --bs 8 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.02 --iters 5000 --seed 0
+ds_long.onnx               EXAM 0.7717 (titan 0.745 human 0.798) | horse painted as figure  37.1% | VAL 0.8777 (frame5 0.71)
+# 2026-11-20 15:01:15 ds_480: DinoSeg slim at 480x864, honest | --train data/train/images:work/labels_train_v3 --arch dinoseg --h 480 --w 864 --crop-h 480 --crop-w 864 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --bs 8 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.02 --iters 3000 --seed 0
+ds_480.onnx                EXAM 0.7827 (titan 0.753 human 0.813) | horse painted as figure  31.1% | VAL 0.8616 (frame5 0.66)
+# 2026-11-21 06:05:20 ds_ext_ab: DinoSeg slim 5000 its + external frames (non-exam episodes, kit x3), honest | --train data/train/images:work/labels_train_v3:3 data/extra/images:work/labels_extra_ab --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --bs 8 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.02 --iters 5000 --seed 0 --lazy
+ds_ext_ab.onnx             EXAM 0.7081 (titan 0.618 human 0.799) | horse painted as figure  35.5% | VAL 0.8589 (frame5 0.65)
+# 2026-11-21 07:02:28 ds_final_b: FINAL candidate: DinoSeg slim, 5000 its, v3 + val x4 (VAL not honest) | --train data/train/images:work/labels_train_v3 data/val_in_domain/images:data/val_in_domain/masks:4 --val none --arch dinoseg --h 448 --w 800 --crop-h 448 --crop-w 800 --zoom 1.0,2.0 --closeup 0.2 --lr 1e-3 --bs 8 --encoder vit_small_patch16_dinov3.lvd1689m|c24,32,48,32 --enc-mult 0.02 --iters 5000 --seed 0
+ds_final_b.onnx            EXAM 0.7469 (titan 0.723 human 0.771) | horse painted as figure  42.4% | VAL 0.9500 (frame5 0.83)

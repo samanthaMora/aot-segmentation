@@ -1,0 +1,22 @@
+# Entorno y basura del sistema
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Datos del kit (fotogramas del anime y GT del curso): no se redistribuyen
+/data/
+
+# Modelos y checkpoints
+*.onnx
+*.pt
+
+# Carpeta de trabajo: solo se versionan scripts, correcciones manuales y el historial de resultados
+work/*
+!work/*.sh
+!work/*.py
+work/*_before_*.py
+!work/*.json
+!work/logs/
+work/logs/*
+!work/logs/exams.txt
